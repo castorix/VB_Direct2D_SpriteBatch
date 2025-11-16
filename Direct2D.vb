@@ -804,9 +804,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -1445,17 +1445,16 @@ Namespace Global.Direct2D
         Public interpolationMode As D2D1_BITMAP_INTERPOLATION_MODE
     End Structure
 
-    <StructLayout(LayoutKind.Sequential)>
-    Public Structure D2D1_BRUSH_PROPERTIES
+    '<StructLayout(LayoutKind.Sequential)>
+    'Public Structure D2D1_BRUSH_PROPERTIES
+    '    Public opacity As Single
+    '    Public transform As D2D1_MATRIX_3X2_F
+    'End Structure
+
+    Public Class D2D1_BRUSH_PROPERTIES
         Public opacity As Single
         Public transform As D2D1_MATRIX_3X2_F
-    End Structure
-
-    'public class D2D1_BRUSH_PROPERTIES
-    '{
-    '    public float opacity;
-    '    public D2D1_MATRIX_3X2_F transform;
-    '}
+    End Class
 
     <StructLayout(LayoutKind.Sequential)>
     Public Class D2D1_COLOR_F
@@ -1719,9 +1718,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -1873,9 +1872,9 @@ Namespace Global.Direct2D
         Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -2235,9 +2234,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -2515,9 +2514,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -2635,9 +2634,9 @@ Namespace Global.Direct2D
         Overloads Function CreateGradientStopCollection(
                         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> straightAlphaGradientStops As D2D1_GRADIENT_STOP(), straightAlphaGradientStopsCount As UInteger, preInterpolationSpace As D2D1_COLOR_SPACE, postInterpolationSpace As D2D1_COLOR_SPACE, bufferPrecision As D2D1_BUFFER_PRECISION, extendMode As D2D1_EXTEND_MODE, colorInterpolationMode As D2D1_COLOR_INTERPOLATION_MODE, <Out> ByRef gradientStopCollection1 As ID2D1GradientStopCollection1) As HRESULT
         <PreserveSig>
-        Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
+        Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
         <PreserveSig>
         Function CreateCommandList(<Out> ByRef commandList As ID2D1CommandList) As HRESULT
         <PreserveSig>
@@ -2710,9 +2709,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -2738,6 +2737,7 @@ Namespace Global.Direct2D
         Overloads Sub FillRoundedRectangle(ByRef roundedRect As D2D1_ROUNDED_RECT, brush As ID2D1Brush)
         <PreserveSig>
         Overloads Sub DrawEllipse(ByRef ellipse As D2D1_ELLIPSE, brush As ID2D1Brush, Optional strokeWidth As Single = 1.0F, Optional strokeStyle As ID2D1StrokeStyle = Nothing)
+        <PreserveSig>
         Overloads Sub FillEllipse(ByRef ellipse As D2D1_ELLIPSE, brush As ID2D1Brush)
         <PreserveSig>
         Overloads Sub DrawGeometry(geometry As ID2D1Geometry, brush As ID2D1Brush, Optional strokeWidth As Single = 1.0F, Optional strokeStyle As ID2D1StrokeStyle = Nothing)
@@ -2830,9 +2830,9 @@ Namespace Global.Direct2D
         Overloads Function CreateGradientStopCollection(
                           <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> straightAlphaGradientStops As D2D1_GRADIENT_STOP(), straightAlphaGradientStopsCount As UInteger, preInterpolationSpace As D2D1_COLOR_SPACE, postInterpolationSpace As D2D1_COLOR_SPACE, bufferPrecision As D2D1_BUFFER_PRECISION, extendMode As D2D1_EXTEND_MODE, colorInterpolationMode As D2D1_COLOR_INTERPOLATION_MODE, <Out> ByRef gradientStopCollection1 As ID2D1GradientStopCollection1) As HRESULT
         <PreserveSig>
-        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
+        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
         <PreserveSig>
         Overloads Function CreateCommandList(<Out> ByRef commandList As ID2D1CommandList) As HRESULT
         <PreserveSig>
@@ -2925,9 +2925,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -3046,9 +3046,9 @@ Namespace Global.Direct2D
         Overloads Function CreateGradientStopCollection(
                     <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> straightAlphaGradientStops As D2D1_GRADIENT_STOP(), straightAlphaGradientStopsCount As UInteger, preInterpolationSpace As D2D1_COLOR_SPACE, postInterpolationSpace As D2D1_COLOR_SPACE, bufferPrecision As D2D1_BUFFER_PRECISION, extendMode As D2D1_EXTEND_MODE, colorInterpolationMode As D2D1_COLOR_INTERPOLATION_MODE, <Out> ByRef gradientStopCollection1 As ID2D1GradientStopCollection1) As HRESULT
         <PreserveSig>
-        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
+        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
         <PreserveSig>
         Overloads Function CreateCommandList(<Out> ByRef commandList As ID2D1CommandList) As HRESULT
         <PreserveSig>
@@ -3157,9 +3157,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -3278,9 +3278,9 @@ Namespace Global.Direct2D
         Overloads Function CreateGradientStopCollection(
                     <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> straightAlphaGradientStops As D2D1_GRADIENT_STOP(), straightAlphaGradientStopsCount As UInteger, preInterpolationSpace As D2D1_COLOR_SPACE, postInterpolationSpace As D2D1_COLOR_SPACE, bufferPrecision As D2D1_BUFFER_PRECISION, extendMode As D2D1_EXTEND_MODE, colorInterpolationMode As D2D1_COLOR_INTERPOLATION_MODE, <Out> ByRef gradientStopCollection1 As ID2D1GradientStopCollection1) As HRESULT
         <PreserveSig>
-        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
+        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
         <PreserveSig>
         Overloads Function CreateCommandList(<Out> ByRef commandList As ID2D1CommandList) As HRESULT
         <PreserveSig>
@@ -3444,9 +3444,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -3566,9 +3566,9 @@ Namespace Global.Direct2D
         Overloads Function CreateGradientStopCollection(
                     <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> straightAlphaGradientStops As D2D1_GRADIENT_STOP(), straightAlphaGradientStopsCount As UInteger, preInterpolationSpace As D2D1_COLOR_SPACE, postInterpolationSpace As D2D1_COLOR_SPACE, bufferPrecision As D2D1_BUFFER_PRECISION, extendMode As D2D1_EXTEND_MODE, colorInterpolationMode As D2D1_COLOR_INTERPOLATION_MODE, <Out> ByRef gradientStopCollection1 As ID2D1GradientStopCollection1) As HRESULT
         <PreserveSig>
-        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
+        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
         <PreserveSig>
         Overloads Function CreateCommandList(<Out> ByRef commandList As ID2D1CommandList) As HRESULT
         <PreserveSig>
@@ -3802,9 +3802,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -3923,9 +3923,9 @@ Namespace Global.Direct2D
         Overloads Function CreateGradientStopCollection(
                         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> straightAlphaGradientStops As D2D1_GRADIENT_STOP(), straightAlphaGradientStopsCount As UInteger, preInterpolationSpace As D2D1_COLOR_SPACE, postInterpolationSpace As D2D1_COLOR_SPACE, bufferPrecision As D2D1_BUFFER_PRECISION, extendMode As D2D1_EXTEND_MODE, colorInterpolationMode As D2D1_COLOR_INTERPOLATION_MODE, <Out> ByRef gradientStopCollection1 As ID2D1GradientStopCollection1) As HRESULT
         <PreserveSig>
-        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
+        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
         <PreserveSig>
         Overloads Function CreateCommandList(<Out> ByRef commandList As ID2D1CommandList) As HRESULT
         <PreserveSig>
@@ -4071,9 +4071,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -4192,9 +4192,9 @@ Namespace Global.Direct2D
         Overloads Function CreateGradientStopCollection(
                         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> straightAlphaGradientStops As D2D1_GRADIENT_STOP(), straightAlphaGradientStopsCount As UInteger, preInterpolationSpace As D2D1_COLOR_SPACE, postInterpolationSpace As D2D1_COLOR_SPACE, bufferPrecision As D2D1_BUFFER_PRECISION, extendMode As D2D1_EXTEND_MODE, colorInterpolationMode As D2D1_COLOR_INTERPOLATION_MODE, <Out> ByRef gradientStopCollection1 As ID2D1GradientStopCollection1) As HRESULT
         <PreserveSig>
-        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
+        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
         <PreserveSig>
         Overloads Function CreateCommandList(<Out> ByRef commandList As ID2D1CommandList) As HRESULT
         <PreserveSig>
@@ -4344,9 +4344,9 @@ Namespace Global.Direct2D
         Overloads Function CreateSharedBitmap(ByRef riid As Guid,
         <[In], Out> data As IntPtr, ByRef bitmapProperties As D2D1_BITMAP_PROPERTIES, <Out> ByRef bitmap As ID2D1Bitmap) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
+        Overloads Function CreateSolidColorBrush(color As D2D1_COLOR_F, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef solidColorBrush As ID2D1SolidColorBrush) As HRESULT
         <PreserveSig>
         Overloads Function CreateGradientStopCollection(
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> gradientStops As D2D1_GRADIENT_STOP(), gradientStopsCount As UInteger, colorInterpolationGamma As D2D1_GAMMA, extendMode As D2D1_EXTEND_MODE, <Out> ByRef gradientStopCollection As ID2D1GradientStopCollection) As HRESULT
@@ -4465,9 +4465,9 @@ Namespace Global.Direct2D
         Overloads Function CreateGradientStopCollection(
                         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)> straightAlphaGradientStops As D2D1_GRADIENT_STOP(), straightAlphaGradientStopsCount As UInteger, preInterpolationSpace As D2D1_COLOR_SPACE, postInterpolationSpace As D2D1_COLOR_SPACE, bufferPrecision As D2D1_BUFFER_PRECISION, extendMode As D2D1_EXTEND_MODE, colorInterpolationMode As D2D1_COLOR_INTERPOLATION_MODE, <Out> ByRef gradientStopCollection1 As ID2D1GradientStopCollection1) As HRESULT
         <PreserveSig>
-        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
+        Overloads Function CreateImageBrush(image As ID2D1Image, ByRef imageBrushProperties As D2D1_IMAGE_BRUSH_PROPERTIES, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef imageBrush As ID2D1ImageBrush) As HRESULT
         <PreserveSig>
-        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, ByRef brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
+        Overloads Function CreateBitmapBrush(bitmap As ID2D1Bitmap, ByRef bitmapBrushProperties As D2D1_BITMAP_BRUSH_PROPERTIES1, brushProperties As D2D1_BRUSH_PROPERTIES, <Out> ByRef bitmapBrush As ID2D1BitmapBrush1) As HRESULT
         <PreserveSig>
         Overloads Function CreateCommandList(<Out> ByRef commandList As ID2D1CommandList) As HRESULT
         <PreserveSig>
