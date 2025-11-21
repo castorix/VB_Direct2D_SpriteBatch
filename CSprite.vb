@@ -84,6 +84,15 @@ Namespace Global.Sprite
             End Set
         End Property
 
+        Public Property Count As Single
+            Get
+                Return m_nNbImages
+            End Get
+            Set(value As Single)
+                m_nNbImages = value
+            End Set
+        End Property
+
         Public Sub New(pDC As ID2D1DeviceContext3, pBitmap As ID2D1Bitmap, nNbImagesX As UInteger, nNbImagesY As UInteger, Optional nNbImages As UInteger = 0, Optional nStepX As Single = 1, Optional nStepY As Single = 1, Optional color As D2D1_COLOR_F = Nothing, Optional matrix As D2D1_MATRIX_3X2_F = Nothing)
             Dim hr As HRESULT = HRESULT.S_OK
             m_pBitmap = pBitmap

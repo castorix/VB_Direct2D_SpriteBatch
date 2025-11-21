@@ -877,8 +877,7 @@ Namespace Global.Direct2D
         <PreserveSig>
         Overloads Sub Flush(<Out> ByRef tag1 As ULong, <Out> ByRef tag2 As ULong)
         <PreserveSig>
-        Overloads Sub SaveDrawingState(
-        <[In], Out> drawingStateBlock As ID2D1DrawingStateBlock)
+        Overloads Sub SaveDrawingState(<[In], Out> drawingStateBlock As ID2D1DrawingStateBlock)
         <PreserveSig>
         Overloads Sub RestoreDrawingState(drawingStateBlock As ID2D1DrawingStateBlock)
         <PreserveSig>
@@ -2035,11 +2034,11 @@ Namespace Global.Direct2D
         Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry) As HRESULT
         <PreserveSig>
         Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES,
-        <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
+                                   <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
         <PreserveSig>
         Function CreateDrawingStateBlock(ByRef drawingStateDescription As D2D1_DRAWING_STATE_DESCRIPTION, textRenderingParams As IDWriteRenderingParams, <Out> ByRef drawingStateBlock As ID2D1DrawingStateBlock) As HRESULT
         <PreserveSig>
-        Function CreateWicBitmapRenderTarget(target As IWICBitmap, renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
+        Function CreateWicBitmapRenderTarget(target As IWICBitmap, ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
         <PreserveSig>
         Function CreateHwndRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef hwndRenderTargetProperties As D2D1_HWND_RENDER_TARGET_PROPERTIES, <Out> ByRef hwndRenderTarget As ID2D1HwndRenderTarget) As HRESULT
         <PreserveSig>
@@ -2072,11 +2071,11 @@ Namespace Global.Direct2D
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES,
-        <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
         <PreserveSig>
         Overloads Function CreateDrawingStateBlock(ByRef drawingStateDescription As D2D1_DRAWING_STATE_DESCRIPTION, textRenderingParams As IDWriteRenderingParams, <Out> ByRef drawingStateBlock As ID2D1DrawingStateBlock) As HRESULT
         <PreserveSig>
-        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
+        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
         <PreserveSig>
         Overloads Function CreateHwndRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef hwndRenderTargetProperties As D2D1_HWND_RENDER_TARGET_PROPERTIES, <Out> ByRef hwndRenderTarget As ID2D1HwndRenderTarget) As HRESULT
         <PreserveSig>
@@ -2085,6 +2084,7 @@ Namespace Global.Direct2D
         Overloads Function CreateDCRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef dcRenderTarget As ID2D1DCRenderTarget) As HRESULT
 #End Region
 
+        <PreserveSig>
         Function CreateDevice(dxgiDevice As IDXGIDevice, <Out> ByRef d2dDevice As ID2D1Device) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES1,
@@ -10470,11 +10470,11 @@ Namespace Global.Direct2D
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
         <PreserveSig>
         Overloads Function CreateDrawingStateBlock(ByRef drawingStateDescription As D2D1_DRAWING_STATE_DESCRIPTION, textRenderingParams As IDWriteRenderingParams, <Out> ByRef drawingStateBlock As ID2D1DrawingStateBlock) As HRESULT
         <PreserveSig>
-        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
+        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
         <PreserveSig>
         Overloads Function CreateHwndRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef hwndRenderTargetProperties As D2D1_HWND_RENDER_TARGET_PROPERTIES, <Out> ByRef hwndRenderTarget As ID2D1HwndRenderTarget) As HRESULT
         <PreserveSig>
@@ -10483,10 +10483,11 @@ Namespace Global.Direct2D
         Overloads Function CreateDCRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef dcRenderTarget As ID2D1DCRenderTarget) As HRESULT
 #End Region
 
+        <PreserveSig>
         Overloads Function CreateDevice(dxgiDevice As IDXGIDevice, <Out> ByRef d2dDevice As ID2D1Device) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES1,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
         <PreserveSig>
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry1) As HRESULT
         <PreserveSig>
@@ -10542,11 +10543,11 @@ Namespace Global.Direct2D
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
         <PreserveSig>
         Overloads Function CreateDrawingStateBlock(ByRef drawingStateDescription As D2D1_DRAWING_STATE_DESCRIPTION, textRenderingParams As IDWriteRenderingParams, <Out> ByRef drawingStateBlock As ID2D1DrawingStateBlock) As HRESULT
         <PreserveSig>
-        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
+        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
         <PreserveSig>
         Overloads Function CreateHwndRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef hwndRenderTargetProperties As D2D1_HWND_RENDER_TARGET_PROPERTIES, <Out> ByRef hwndRenderTarget As ID2D1HwndRenderTarget) As HRESULT
         <PreserveSig>
@@ -10559,7 +10560,7 @@ Namespace Global.Direct2D
         Overloads Function CreateDevice(dxgiDevice As IDXGIDevice, <Out> ByRef d2dDevice As ID2D1Device) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES1,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
         <PreserveSig>
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry1) As HRESULT
         <PreserveSig>
@@ -10620,11 +10621,11 @@ Namespace Global.Direct2D
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
         <PreserveSig>
         Overloads Function CreateDrawingStateBlock(ByRef drawingStateDescription As D2D1_DRAWING_STATE_DESCRIPTION, textRenderingParams As IDWriteRenderingParams, <Out> ByRef drawingStateBlock As ID2D1DrawingStateBlock) As HRESULT
         <PreserveSig>
-        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
+        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
         <PreserveSig>
         Overloads Function CreateHwndRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef hwndRenderTargetProperties As D2D1_HWND_RENDER_TARGET_PROPERTIES, <Out> ByRef hwndRenderTarget As ID2D1HwndRenderTarget) As HRESULT
         <PreserveSig>
@@ -10633,10 +10634,11 @@ Namespace Global.Direct2D
         Overloads Function CreateDCRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef dcRenderTarget As ID2D1DCRenderTarget) As HRESULT
 #End Region
 
+        <PreserveSig>
         Overloads Function CreateDevice(dxgiDevice As IDXGIDevice, <Out> ByRef d2dDevice As ID2D1Device) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES1,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
         <PreserveSig>
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry1) As HRESULT
         <PreserveSig>
@@ -10702,11 +10704,11 @@ Namespace Global.Direct2D
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
         <PreserveSig>
         Overloads Function CreateDrawingStateBlock(ByRef drawingStateDescription As D2D1_DRAWING_STATE_DESCRIPTION, textRenderingParams As IDWriteRenderingParams, <Out> ByRef drawingStateBlock As ID2D1DrawingStateBlock) As HRESULT
         <PreserveSig>
-        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
+        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
         <PreserveSig>
         Overloads Function CreateHwndRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef hwndRenderTargetProperties As D2D1_HWND_RENDER_TARGET_PROPERTIES, <Out> ByRef hwndRenderTarget As ID2D1HwndRenderTarget) As HRESULT
         <PreserveSig>
@@ -10719,7 +10721,7 @@ Namespace Global.Direct2D
         Overloads Function CreateDevice(dxgiDevice As IDXGIDevice, <Out> ByRef d2dDevice As ID2D1Device) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES1,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
         <PreserveSig>
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry1) As HRESULT
         <PreserveSig>
@@ -10790,11 +10792,11 @@ Namespace Global.Direct2D
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
         <PreserveSig>
         Overloads Function CreateDrawingStateBlock(ByRef drawingStateDescription As D2D1_DRAWING_STATE_DESCRIPTION, textRenderingParams As IDWriteRenderingParams, <Out> ByRef drawingStateBlock As ID2D1DrawingStateBlock) As HRESULT
         <PreserveSig>
-        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
+        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
         <PreserveSig>
         Overloads Function CreateHwndRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef hwndRenderTargetProperties As D2D1_HWND_RENDER_TARGET_PROPERTIES, <Out> ByRef hwndRenderTarget As ID2D1HwndRenderTarget) As HRESULT
         <PreserveSig>
@@ -10807,7 +10809,7 @@ Namespace Global.Direct2D
         Overloads Function CreateDevice(dxgiDevice As IDXGIDevice, <Out> ByRef d2dDevice As ID2D1Device) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES1,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
         <PreserveSig>
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry1) As HRESULT
         <PreserveSig>
@@ -10883,11 +10885,11 @@ Namespace Global.Direct2D
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
         <PreserveSig>
         Overloads Function CreateDrawingStateBlock(ByRef drawingStateDescription As D2D1_DRAWING_STATE_DESCRIPTION, textRenderingParams As IDWriteRenderingParams, <Out> ByRef drawingStateBlock As ID2D1DrawingStateBlock) As HRESULT
         <PreserveSig>
-        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
+        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
         <PreserveSig>
         Overloads Function CreateHwndRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef hwndRenderTargetProperties As D2D1_HWND_RENDER_TARGET_PROPERTIES, <Out> ByRef hwndRenderTarget As ID2D1HwndRenderTarget) As HRESULT
         <PreserveSig>
@@ -10900,7 +10902,7 @@ Namespace Global.Direct2D
         Overloads Function CreateDevice(dxgiDevice As IDXGIDevice, <Out> ByRef d2dDevice As ID2D1Device) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES1,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
         <PreserveSig>
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry1) As HRESULT
         <PreserveSig>
@@ -10980,11 +10982,11 @@ Namespace Global.Direct2D
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), Optional dashesCount As UInteger = 0) As ID2D1StrokeStyle
         <PreserveSig>
         Overloads Function CreateDrawingStateBlock(ByRef drawingStateDescription As D2D1_DRAWING_STATE_DESCRIPTION, textRenderingParams As IDWriteRenderingParams, <Out> ByRef drawingStateBlock As ID2D1DrawingStateBlock) As HRESULT
         <PreserveSig>
-        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
+        Overloads Function CreateWicBitmapRenderTarget(target As IWICBitmap, ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, <Out> ByRef renderTarget As ID2D1RenderTarget) As HRESULT
         <PreserveSig>
         Overloads Function CreateHwndRenderTarget(ByRef renderTargetProperties As D2D1_RENDER_TARGET_PROPERTIES, ByRef hwndRenderTargetProperties As D2D1_HWND_RENDER_TARGET_PROPERTIES, <Out> ByRef hwndRenderTarget As ID2D1HwndRenderTarget) As HRESULT
         <PreserveSig>
@@ -10997,7 +10999,7 @@ Namespace Global.Direct2D
         Overloads Function CreateDevice(dxgiDevice As IDXGIDevice, <Out> ByRef d2dDevice As ID2D1Device) As HRESULT
         <PreserveSig>
         Overloads Function CreateStrokeStyle(ByRef strokeStyleProperties As D2D1_STROKE_STYLE_PROPERTIES1,
-<MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
+                                             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=2)> dashes As Single(), dashesCount As UInteger, <Out> ByRef strokeStyle As ID2D1StrokeStyle1) As HRESULT
         <PreserveSig>
         Overloads Function CreatePathGeometry(<Out> ByRef pathGeometry As ID2D1PathGeometry1) As HRESULT
         <PreserveSig>

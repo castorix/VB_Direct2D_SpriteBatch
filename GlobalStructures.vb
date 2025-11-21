@@ -214,6 +214,10 @@ Namespace Global.GlobalStructures
         Public Shared Function GetDpiForWindow(hwnd As IntPtr) As UInteger
         End Function
 
+        Public Shared Function RGB(r As Byte, g As Byte, b As Byte) As Integer
+            Return (r) Or ((g) << 8) Or ((b) << 16)
+        End Function
+
         Public Shared Function HIWORD(n As Integer) As Integer
             Return (n >> 16) And &HFFFF
         End Function
@@ -221,5 +225,10 @@ Namespace Global.GlobalStructures
         Public Shared Function LOWORD(n As Integer) As Integer
             Return n And &HFFFF
         End Function
+
+        Public Shared Function SUCCEEDED(hr As HRESULT) As Boolean
+            Return hr >= 0
+        End Function
+
     End Class
 End Namespace

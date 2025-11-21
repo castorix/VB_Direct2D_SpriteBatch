@@ -114,7 +114,7 @@ Public Class Form1
         hr = CreateD3D11Device()
         hr = CreateDeviceResources()
         hr = CreateSwapChain(Me.Handle)
-        If hr = HRESULT.S_OK Then hr = ConfigureSwapChain()
+        If SUCCEEDED(hr) Then hr = ConfigureSwapChain()
 
         ' To avoid background painting the first time the window is shown
         ShowWindow(Me.Handle, SW_HIDE)
@@ -295,7 +295,7 @@ Public Class Form1
                     hr = CreateD3D11Device()
                     hr = CreateDeviceResources()
                     hr = CreateSwapChain(Me.Handle)
-                    If hr = HRESULT.S_OK Then hr = ConfigureSwapChain()
+                    If SUCCEEDED(hr) Then hr = ConfigureSwapChain()
                 End If
                 hr = m_pDXGISwapChain1.Present(1, 0)
             End If
@@ -361,12 +361,12 @@ Public Class Form1
 
         Dim featureLevel As D3D_FEATURE_LEVEL
         hr = D3D11CreateDevice(Nothing, D3D_DRIVER_TYPE.D3D_DRIVER_TYPE_HARDWARE, IntPtr.Zero, creationFlags, aD3D_FEATURE_LEVEL, aD3D_FEATURE_LEVEL.Length, D3D11_SDK_VERSION, m_pD3D11DevicePtr, featureLevel, m_pD3D11DeviceContextPtr)    ' specify null to use the default adapter
-        If hr = HRESULT.S_OK Then
+        If SUCCEEDED(hr) Then
             'm_pD3D11DeviceContext = Marshal.GetObjectForIUnknown(pD3D11DeviceContextPtr) as ID3D11DeviceContext;             
 
             m_pDXGIDevice = TryCast(Marshal.GetObjectForIUnknown(m_pD3D11DevicePtr), IDXGIDevice1)
             hr = m_pD2DFactory1.CreateDevice(m_pDXGIDevice, m_pD2DDevice)
-            If hr = HRESULT.S_OK Then
+            If SUCCEEDED(hr) Then
                 hr = m_pD2DDevice.CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS.D2D1_DEVICE_CONTEXT_OPTIONS_NONE, m_pD2DDeviceContext)
                 Marshal.ReleaseComObject(m_pD2DDevice)
             End If
@@ -450,14 +450,16 @@ Public Class Form1
 
         Dim pDXGIAdapter As IDXGIAdapter = Nothing
         hr = m_pDXGIDevice.GetAdapter(pDXGIAdapter)
-        If hr = HRESULT.S_OK Then
+        If SUCCEEDED(hr) Then
             Dim pDXGIFactory2Ptr As IntPtr
             hr = pDXGIAdapter.GetParent(GetType(IDXGIFactory2).GUID, pDXGIFactory2Ptr)
-            If hr = HRESULT.S_OK Then
+            If SUCCEEDED(hr) Then
                 Dim pDXGIFactory2 As IDXGIFactory2 = TryCast(Marshal.GetObjectForIUnknown(pDXGIFactory2Ptr), IDXGIFactory2)
                 If hWnd <> IntPtr.Zero Then
                     hr = pDXGIFactory2.CreateSwapChainForHwnd(m_pD3D11DevicePtr, hWnd, swapChainDesc, IntPtr.Zero, Nothing, m_pDXGISwapChain1)
                 Else
+                    ' For Composition SwapChain
+                    swapChainDesc.AlphaMode = DXGI_ALPHA_MODE.DXGI_ALPHA_MODE_PREMULTIPLIED
                     hr = pDXGIFactory2.CreateSwapChainForComposition(m_pD3D11DevicePtr, swapChainDesc, Nothing, m_pDXGISwapChain1)
                 End If
                 hr = m_pDXGIDevice.SetMaximumFrameLatency(1)
@@ -482,10 +484,10 @@ Public Class Form1
 
         Dim pDXGISurfacePtr = IntPtr.Zero
         hr = m_pDXGISwapChain1.GetBuffer(0, GetType(IDXGISurface).GUID, pDXGISurfacePtr)
-        If hr = HRESULT.S_OK Then
+        If SUCCEEDED(hr) Then
             Dim pDXGISurface As IDXGISurface = TryCast(Marshal.GetObjectForIUnknown(pDXGISurfacePtr), IDXGISurface)
             hr = m_pD2DDeviceContext.CreateBitmapFromDxgiSurface(pDXGISurface, bitmapProperties, m_pD2DTargetBitmap)
-            If hr = HRESULT.S_OK Then
+            If SUCCEEDED(hr) Then
                 m_pD2DDeviceContext.SetTarget(m_pD2DTargetBitmap)
             End If
             SafeRelease(pDXGISurface)
@@ -516,20 +518,20 @@ Public Class Form1
 
         Dim wicStream As IWICStream = Nothing
         hr = CType(m_pWICImagingFactory.CreateStream(wicStream), HRESULT)
-        If hr = HRESULT.S_OK Then
+        If SUCCEEDED(hr) Then
             hr = CType(wicStream.InitializeFromMemory(bytes, bytes.Length), HRESULT)
-            If hr = HRESULT.S_OK Then
+            If SUCCEEDED(hr) Then
                 Dim pDecoder As IWICBitmapDecoder = Nothing
                 hr = CType(m_pWICImagingFactory.CreateDecoderFromStream(wicStream, Guid.Empty, WICDecodeOptions.WICDecodeMetadataCacheOnDemand, pDecoder), HRESULT)
-                If hr = HRESULT.S_OK Then
+                If SUCCEEDED(hr) Then
                     Dim pFrame As IWICBitmapFrameDecode = Nothing
                     hr = CType(pDecoder.GetFrame(0, pFrame), HRESULT)
-                    If hr = HRESULT.S_OK Then
+                    If SUCCEEDED(hr) Then
                         Dim pConvertedSourceBitmap As IWICFormatConverter = Nothing
                         hr = CType(m_pWICImagingFactory.CreateFormatConverter(pConvertedSourceBitmap), HRESULT)
-                        If hr = HRESULT.S_OK Then
+                        If SUCCEEDED(hr) Then
                             hr = CType(pConvertedSourceBitmap.Initialize(CType(pFrame, IWICBitmapSource), WICTools.GUID_WICPixelFormat32bppPBGRA, WICBitmapDitherType.WICBitmapDitherTypeNone, Nothing, 0, WICBitmapPaletteType.WICBitmapPaletteTypeCustom), HRESULT)
-                            If hr = HRESULT.S_OK Then
+                            If SUCCEEDED(hr) Then
                                 Dim bitmapproperties As D2D1_BITMAP_PROPERTIES = New D2D1_BITMAP_PROPERTIES()
                                 hr = m_pD2DDeviceContext.CreateBitmapFromWicBitmap(pConvertedSourceBitmap, bitmapproperties, pD2DBitmap)
                             End If
